@@ -12,10 +12,14 @@ class VehicleServices {
       String fileContent = await rootBundle.loadString(filePath);
       List<dynamic> jsonData = json.decode(fileContent);
 
+      print(jsonData); // Affiche les données JSON
+
       vehicles = jsonData.map((data) => VehicleModel.fromJson(data)).toList();
     } catch (e) {
+      print(e);
       throw "La récupération des véhicules a échoué. Veuillez réessayer.";
     }
+
     return vehicles;
   }
 }

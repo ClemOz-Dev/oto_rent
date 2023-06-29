@@ -1,9 +1,16 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'VehicleModel.g.dart';
+
+@JsonSerializable()
 class VehicleModel {
   String mark;
   String model;
+  @JsonKey(name: 'zeroto100')
   double zeroTo100;
   String energyClass;
   int power;
+  @JsonKey(name: 'topspeed')
   int topSpeed;
   String pic;
   String location;
@@ -21,31 +28,8 @@ class VehicleModel {
     required this.price,
   });
 
-  factory VehicleModel.fromJson(Map<String, dynamic> json) {
-    return VehicleModel(
-      mark: json['mark'],
-      model: json['model'],
-      zeroTo100: json['zeroto100'],
-      energyClass: json['energyClass'],
-      power: json['power'],
-      topSpeed: json['topspeed'],
-      pic: json['pic'],
-      location: json['location'],
-      price: json['price'],
-    );
-  }
+  factory VehicleModel.fromJson(Map<String, dynamic> json) =>
+      _$VehicleModelFromJson(json);
 
-  Map<String, dynamic> toJson() {
-    return {
-      'mark': mark,
-      'model': model,
-      'zeroto100': zeroTo100,
-      'energyClass': energyClass,
-      'power': power,
-      'topspeed': topSpeed,
-      'pic': pic,
-      'location': location,
-      'price': price,
-    };
-  }
+  Map<String, dynamic> toJson() => _$VehicleModelToJson(this);
 }
